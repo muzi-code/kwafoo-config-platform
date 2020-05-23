@@ -1,3 +1,21 @@
+/.apt_generated/
+/target/
+/temp/
+/.settings/
+/.project
+/.factorypath
+/.classpath
+/.springBeans
+*.iml
+*.ipr
+*.iws
+*.pyc
+.idea/
+target/
+*.real_output.txt
+libs
+*.realOutput.txt
+*.log4j2-test.xml
 # maven ignore
 target/
 *.jar
@@ -55,7 +73,3 @@ Thumbs.db
 */node_modules
 */node_modules/*
 */dist
-
-.mvn
-*.cmd
-mvnm
