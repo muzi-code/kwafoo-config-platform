@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>demo页面</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+    <link rel="bookmark" href="../../layuiadmin/sys/img/favicon.ico"/>
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card layui-form">
+        <div class="layui-card-body layui-row">
+            <!--<div class="layui-row">-->
+                <!--<div class="layui-inline layui-col-md1">-->
+                    <!--<select name="typeSelect" lay-filter="typeSelect">-->
+                        <!--<option value="sku">SKU</option>-->
+                        <!--<option value="thirdCategoryId" selected>三级品类</option>-->
+                        <!--<option value="attributeName">属性名</option>-->
+                        <!--<option value="attributeValue">属性值</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<div class="layui-inline layui-col-md2" id="skuContainer">-->
+                    <!--<input type="text" id="sku" name="sku" placeholder="请输入SKU" autocomplete="off" class="layui-input">-->
+                <!--</div>-->
+                <!--<div class="layui-inline layui-col-md2" id="thirdCategoryIdContainer">-->
+                    <!--<select id="thirdCategoryId" name="thirdCategoryId" lay-filter="thirdCategoryId" placeholder="请选择三级品类">-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<div class="layui-inline layui-col-md2" id="attributeNameContainer">-->
+                    <!--<select id="attributeName" name="attributeName" lay-filter="attributeName" placeholder="请选择属性名" lay-search>-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<div class="layui-inline layui-col-md2" id="attributeValueContainer">-->
+                    <!--<select id="attributeValue" name="attributeValue" lay-filter="attributeValue" placeholder="请选择属性值" lay-search >-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<div class="layui-inline">-->
+                    <!--<button id="searchLinkGraphButton" class="layui-btn layui-btn-normal ">-->
+                        <!--<i class="layui-icon">&#xe615;</i> 搜索-->
+                    <!--</button>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="layui-row layui-col-space15">-->
+                <!--<div id="linkGraphContainer" style="height: 700px;width: 100%;"></div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+<script src="../../layuiadmin/sys/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../layuiadmin/sys/js/echart/echarts.min.js"></script>
+<!--<script type="text/javascript" src="../../layuiadmin/sys/js/echart/echarts-gl.min.js"></script>-->
+<!--<script type="text/javascript" src="../../layuiadmin/sys/js/echart/ecStat.min.js"></script>-->
+<!--<script type="text/javascript" src="../../layuiadmin/sys/js/echart/dataTool.min.js"></script>-->
+<!--<script type="text/javascript" src="../../layuiadmin/sys/js/echart/china.js"></script>-->
+<!--<script type="text/javascript" src="../../layuiadmin/sys/js/echart/world.js"></script>-->
+<!--<script type="text/javascript" src="../../layuiadmin/sys/js/echart/bmap.min.js"></script>-->
+<script type="text/javascript" src="../../layuiadmin/sys/js/common/common-link-graph.js"></script>
+<script src="../../layuiadmin/layui/layui.js?t=1"></script>
+<script>
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form'], function () {
+        // layui 框架组件对象
+        var form = layui.form;
+        var layer = layui.layer;
+        var admin = layui.admin;
+
+        // 页面公告
+
+        //
+        // // 容器及组件DOM
+        // var skuInputContainer = $("#skuContainer");
+        // var cate3SelectContainer = $("#thirdCategoryIdContainer");
+        // var attrNameSelectContainer = $("#attributeNameContainer");
+        // var attrValueSelectContainer = $("#attributeValueContainer");
+        // var thirdCategoryIdSelectDOM = $("#thirdCategoryId");
+        // var attributeNameSelectDOM = $("#attributeName");
+        // var attributeValueSelectDOM = $("#attributeValue");
+        // var linkGraphContainerDom = document.getElementById("linkGraphContainer");
+        // var linkGraphChart = echarts.init(linkGraphContainerDom);
+        //
+        // // 初始化执行方法
+        // finalInitSearchComponent();
+        // finalBindingButtonClick();
+        //
+        // // 监听方法
+        //
+        // // 1.监听搜索类型下拉列表控制显隐动画
+        // form.on('select(typeSelect)', function (data) {
+        //     // console.log(data.elem); //得到select原始DOM对象
+        //     // console.log(data.value); //得到被选中的值
+        //     // console.log(data.othis); //得到美化后的DOM对象
+        //     var type = data.value;
+        //     if (type === "sku") {
+        //         skuInputContainer.show();
+        //         cate3SelectContainer.hide();
+        //         attrNameSelectContainer.hide();
+        //         attrValueSelectContainer.hide();
+        //     } else if (type === "thirdCategoryId") {
+        //         skuInputContainer.hide();
+        //         cate3SelectContainer.show();
+        //         attrNameSelectContainer.hide();
+        //         attrValueSelectContainer.hide();
+        //     } else if (type === "attributeName") {
+        //         skuInputContainer.hide();
+        //         cate3SelectContainer.show();
+        //         attrNameSelectContainer.show();
+        //         attrValueSelectContainer.hide();
+        //     } else if (type === "attributeValue") {
+        //         skuInputContainer.hide();
+        //         cate3SelectContainer.show();
+        //         attrNameSelectContainer.show();
+        //         attrValueSelectContainer.show();
+        //     }
+        //
+        //     /**
+        //      * thirdCategoryId是默认初始化的
+        //      * 如果选择属性名或属性值要基于一级列表的默认选项设置二级列表的内容
+        //      * 提升用户体验
+        //      */
+        //     if (type === "attributeName" || type === "attributeValue"){
+        //         var thirdCategoryId = $("select[name='thirdCategoryId']").val();
+        //         var thirdCategoryName = $("#thirdCategoryId").find("option:selected").text();
+        //         attributeNameSelectDOM.empty();
+        //         attributeValueSelectDOM.empty();
+        //         handlerInitAttributeNameSelect(thirdCategoryId,thirdCategoryName);
+        //     }
+        // });
+        //
+        // // 2.监听三级品类ID下拉列表控制属性名列表
+        // form.on('select(thirdCategoryId)', function (data) {
+        //     console.log(data.elem); //得到select原始DOM对象
+        //     console.log(data.value); //得到被选中的值
+        //     console.log(data.elem[data.elem.selectedIndex].text); //得到被选中的文本
+        //     console.log(data.othis); //得到美化后的DOM对象
+        //
+        //     var thirdCategoryId = data.value;
+        //     var thirdCategoryName = data.elem[data.elem.selectedIndex].text;
+        //     if (data.value === undefined ||data.value === "" || data.value == null) {
+        //         layer.msg('请选择一个三级品类', {icon: 5});
+        //     }else{
+        //         attributeNameSelectDOM.empty();
+        //         attributeValueSelectDOM.empty();
+        //         handlerInitAttributeNameSelect(thirdCategoryId,thirdCategoryName);
+        //     }
+        // });
+        //
+        // // 3.监听属性名列表控制属性值列表
+        // form.on('select(attributeName)', function (data) {
+        //     console.log(data.elem); //得到select原始DOM对象
+        //     console.log(data.value); //得到被选中的值
+        //     console.log(data.elem[data.elem.selectedIndex].text); //得到被选中的文本
+        //     console.log(data.othis); //得到美化后的DOM对象
+        //
+        //     var thirdCategoryId = $("select[name='thirdCategoryId']").val();
+        //     var attributeName = data.value;
+        //     if (thirdCategoryId === undefined ||thirdCategoryId === "" || thirdCategoryId == null) {
+        //         layer.msg('请先选择一个三级品类', {icon: 5});
+        //     }else if (data.value === undefined ||data.value === "" || data.value == null) {
+        //         layer.msg('请先选择一个属性名', {icon: 5});
+        //     }else{
+        //         attributeValueSelectDOM.empty();
+        //         handlerInitAttributeValueSelect(thirdCategoryId,attributeName);
+        //     }
+        // });
+        //
+        //
+        //
+        //
+        // // 自定义功能方法
+        //
+        // // 1.初始化组件内容，显隐/三级品类下拉列表内容初始化
+        // function finalInitSearchComponent() {
+        //     skuInputContainer.hide();
+        //     cate3SelectContainer.show();
+        //     attrNameSelectContainer.hide();
+        //     attrValueSelectContainer.hide();
+        //     $.get("/api/basic/product/dictionary/listCate3", function(result) {
+        //         thirdCategoryIdSelectDOM.empty();
+        //         if (result.status === 200) {
+        //             thirdCategoryIdSelectDOM.append(new Option("请选择三级品类", ""));
+        //             $.each(result.data, function(index, item) {
+        //                 thirdCategoryIdSelectDOM.append(new Option(item.text,item.value,item.defaultSelected,item.selected));
+        //             });
+        //         } else {
+        //             thirdCategoryIdSelectDOM.append(new Option("暂无数据", ""));
+        //             layer.msg(result.msg, {icon: 5});
+        //         }
+        //         form.render("select");
+        //
+        //         // 初始化下拉列表成功才能基于下拉列表被选中的三级分类初始化图谱
+        //         if (result.status === 200) {
+        //             $.get("/api/basic/knowledge/product/getProductKnowledgeGraph",{
+        //                 type: $("select[name='typeSelect']").val(),
+        //                 thirdCategoryId: $("select[name='thirdCategoryId']").val()
+        //             },function (result) {
+        //                 if (result.status === 200) {
+        //                     var chart = generalLinkGraph(linkGraphChart, result.data.nodeList, result.data.linkList, result.data.legend,result.data.categoryList);
+        //                     handlerBindingChartClick(chart);
+        //                 } else {
+        //                     layer.msg(result.msg, {icon: 5});
+        //                 }
+        //             });
+        //         }
+        //     });
+        //
+        // }
+        //
+        // // 2.图形绑定点击函数
+        // function handlerBindingChartClick(chart) {
+        //     chart.on('click', function (param) {
+        //         console.log('param---->', param);
+        //         if (param.dataType === 'node') {
+        //             // 节点
+        //             if(param.data.category !== 0){
+        //                 // 非中心节点
+        //                 switch (param.data.nodeType) {
+        //                     case 11:
+        //                         handlerDrawSingleSkuProductGraph(param.data.nickname,param.data.content.sku);
+        //                         break;
+        //                     case 12:
+        //                         layer.msg('属性名节点');
+        //                         var params1 = getSearchComponentParams("attributeName","",param.data.content.thirdCategoryId,param.data.content.attributeName,"");
+        //                         handlerDrawProductGraph(params1);
+        //                         break;
+        //                     case 13:
+        //                         layer.msg('属性值节点');
+        //                         var params2 = getSearchComponentParams("attributeValue","",param.data.content.thirdCategoryId,param.data.content.attributeName,param.data.content.attributeValue);
+        //                         console.log(params2);
+        //                         linkGraphChart.clear();
+        //                         handlerDrawProductGraph(params2);
+        //                         break;
+        //                 }
+        //             }
+        //         } else {
+        //             // 边
+        //         }
+        //     });
+        // }
+        //
+        // // 3.根据三级分类信息初始化属性名下拉列表，数据方法
+        // function handlerInitAttributeNameSelect(thirdCategoryId,thirdCategoryName){
+        //     $.get("/api/basic/product/dictionary/listAttributeNameByCate3",{
+        //         thirdCategoryId : thirdCategoryId,
+        //         thirdCategoryName : thirdCategoryName
+        //     }, function(result) {
+        //         if (result.status === 200) {
+        //             attributeNameSelectDOM.append(new Option("请选择属性名", ""));
+        //             $.each(result.data, function(index, item) {
+        //                 attributeNameSelectDOM.append(new Option(item.text,item.value));
+        //             });
+        //         } else {
+        //             attributeNameSelectDOM.append(new Option("暂无数据", ""));
+        //
+        //             var typeSelect = $("select[name='typeSelect']").val();
+        //             if (typeSelect === "attributeName"){
+        //                 layer.msg(result.msg, {icon: 5});
+        //             }
+        //         }
+        //         form.render("select");
+        //     });
+        // }
+        //
+        // // 4.根据三级分类ID和属性名初始化属性值下拉列表，数据方法
+        // function handlerInitAttributeValueSelect(thirdCategoryId,attributeName){
+        //     $.get("/api/basic/product/dictionary/listAttributeValueByCate3AttrName",{
+        //         thirdCategoryId : thirdCategoryId,
+        //         attributeName : attributeName
+        //     }, function(result) {
+        //         if (result.status === 200) {
+        //             attributeValueSelectDOM.append(new Option("请选择属性值", ""));
+        //             $.each(result.data, function(index, item) {
+        //                 attributeValueSelectDOM.append(new Option(item.text,item.value));
+        //             });
+        //         } else {
+        //             attributeValueSelectDOM.append(new Option("暂无数据", ""));
+        //
+        //             var typeSelect = $("select[name='typeSelect']").val();
+        //             if (typeSelect === "attributeValue"){
+        //                 layer.msg(result.msg, {icon: 5});
+        //             }
+        //         }
+        //         form.render("select");
+        //     });
+        // }
+        //
+        // // 5.查询按钮绑定点击函数
+        // function finalBindingButtonClick(){
+        //     $("#searchLinkGraphButton").on('click', function () {
+        //         var type = $("select[name='typeSelect']").val();
+        //         var sku = $('input[name=sku]').val();
+        //         var thirdCategoryId = $("select[name='thirdCategoryId']").val();
+        //         var attributeName = $("select[name='attributeName']").val();
+        //         var attributeValue = $("select[name='attributeValue']").val();
+        //
+        //         var params = getSearchComponentParams(type,sku,thirdCategoryId,attributeName,attributeValue);
+        //
+        //         console.log(params);
+        //
+        //         if(params === undefined || params === null || params.type === undefined || params.type === null){
+        //             layer.msg("查询参数不合法", {icon: 5});
+        //             return;
+        //         }
+        //
+        //         handlerDrawProductGraph(params);
+        //     });
+        // }
+        //
+        // // 6.获取查询条件参数
+        // function getSearchComponentParams(type,sku,thirdCategoryId,attributeName,attributeValue){
+        //     var params = null;
+        //     if (type === "sku") {
+        //         params = {
+        //             type : type,
+        //             sku : sku
+        //         };
+        //     } else if (type === "thirdCategoryId") {
+        //         params = {
+        //             type : type,
+        //             thirdCategoryId : thirdCategoryId
+        //         };
+        //     } else if (type === "attributeName") {
+        //         params = {
+        //             type : type,
+        //             thirdCategoryId : thirdCategoryId,
+        //             attributeName: attributeName
+        //         };
+        //     } else if (type === "attributeValue") {
+        //         params = {
+        //             type : type,
+        //             thirdCategoryId : thirdCategoryId,
+        //             attributeName : attributeName,
+        //             attributeValue : attributeValue
+        //         };
+        //     }
+        //     return params;
+        // }
+        //
+        //
+        // // 7.graph data method
+        // function handlerDrawProductGraph(params){
+        //     $.ajax({
+        //         url: "/api/basic/knowledge/product/getProductKnowledgeGraph",
+        //         data: params,
+        //         dataType: "json",
+        //         success:function (result) {
+        //             console.log(result);
+        //             if (result.status === 200) {
+        //                 generalLinkGraph(linkGraphChart, result.data.nodeList, result.data.linkList, result.data.legend, result.data.categoryList);
+        //             } else {
+        //                 layer.msg(result.msg, {icon: 3});
+        //             }
+        //         },
+        //         error:function (result) {
+        //             console.log(result.responseJSON);
+        //             layer.msg("暂无数据!", {icon: 3});
+        //         }
+        //     });
+        // }
+        //
+        //
+        // function handlerDrawSingleSkuProductGraph(productName,skuParams) {
+        //     if (skuParams === null || skuParams === undefined || skuParams === ""){
+        //         layer.msg("参数校验，该节点SKU值为定义！", {icon: 5});
+        //     }
+        //     // SKU节点信息
+        //     layer.open({
+        //         title: productName + "详细信息"
+        //         ,type: 1
+        //         ,skin: 'layui-layer-rim'
+        //         ,shadeClose: true
+        //         ,area: admin.screen() < 2 ? ['80%', '300px'] : ['700px', '500px']
+        //         ,content: '<div id="tmpSkuGraphContainer" style="height: 100%;width: 100%;"></div>'
+        //     });
+        //     var dialogDom = document.getElementById("tmpSkuGraphContainer");
+        //     var dialogSkuChart = echarts.init(dialogDom);
+        //     $.get("/api/basic/knowledge/product/getSingleSkuKnowledgeGraph",{
+        //         sku : skuParams
+        //     },function (result) {
+        //         if (result.status === 200) {
+        //             singleSkuKnowledgeGraph(dialogSkuChart, result.data.nodeList, result.data.linkList, result.data.legend,result.data.categoryList);
+        //         } else {
+        //             layer.msg(result.msg, {icon: 5});
+        //         }
+        //     });
+        // }
+
+    });
+</script>
+</body>
+</html>
+

@@ -20,7 +20,7 @@ public class Swagger2Configuration {
 
     @Bean
     public Docket createRestApi() {
-        String CONTROLLER_PACKAGES = "com.github.dev.muzi.kwafoo.config.platform.boot.controller";
+        String CONTROLLER_PACKAGES = "com.github.dev.muzi.kwafoo.config.platform.boot.controller.api";
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
