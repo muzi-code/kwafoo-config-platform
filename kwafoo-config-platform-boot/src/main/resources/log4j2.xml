@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="OFF" monitorInterval="1800">
     <properties>
-        <property name="LOG_HOME">/export/Logs/alpha-writing-itempicking</property>
+        <property name="LOG_HOME">/export/Logs/kwafoo-config-platform</property>
         <property name="INFO_FILE_NAME">info</property>
     </properties>
 
