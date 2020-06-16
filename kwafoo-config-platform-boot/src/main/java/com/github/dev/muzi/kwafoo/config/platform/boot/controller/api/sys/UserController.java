@@ -1,9 +1,8 @@
 package com.github.dev.muzi.kwafoo.config.platform.boot.controller.api.sys;
 
-
 import com.github.dev.muzi.kwafoo.config.platform.boot.filter.JwtTokenTool;
 import com.github.dev.muzi.kwafoo.config.platform.common.CookieUtil;
-import com.github.dev.muzi.kwafoo.config.platform.domain.view.BaseResponseVO;
+import com.github.dev.muzi.kwafoo.config.platform.domain.controller.BaseResponse;
 import io.swagger.annotations.Api;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,17 +29,17 @@ public class UserController {
 
     @RequestMapping(value = "/adminLogin", method = {RequestMethod.GET})
     @ResponseBody
-    public BaseResponseVO adminLogin(String username, String password,HttpServletResponse response) {
+    public BaseResponse adminLogin(String username, String password, HttpServletResponse response) {
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
-            return BaseResponseVO.failure();
+            return BaseResponse.failure();
         }
         if (username.equals("aidaren") && password.equals("abc123456")) {
             String randomKey = jwtTokenTool.getRandomKey();
             String token = jwtTokenTool.generateToken("aidaren", randomKey);
             CookieUtil.set(response, TOKEN_KEY, TOKEN_VALUE_PRE + token, TOKEN_COOKIE_MAX_AGE);
-            return BaseResponseVO.success();
+            return BaseResponse.success();
         }
-        return BaseResponseVO.failure();
+        return BaseResponse.failure();
     }
 
     @RequestMapping(value = "/loginOut", method = {RequestMethod.GET})

@@ -1,5 +1,6 @@
 package com.github.dev.muzi.kwafoo.config.platform.domain.exception;
 
+import com.github.dev.muzi.kwafoo.config.platform.domain.constant.CommonStatus;
 import lombok.Data;
 
 /**
@@ -7,22 +8,19 @@ import lombok.Data;
  * Create by Muzi Li on 2019-11-26
  */
 @Data
-public class ServiceTransactionException extends Exception {
-    private static final String ERROR_MESSAGE = "业务参数异常";
-    private static final Integer ERROR_CODE = 503;
-
+public class ServiceTransactionException extends RuntimeException {
     private Integer code;
     private String errMsg;
 
     public ServiceTransactionException() {
-        super(ERROR_MESSAGE);
-        this.code = ERROR_CODE;
-        this.errMsg = ERROR_MESSAGE;
+        super();
+        this.code = CommonStatus.TRANSACTION.getCode();
+        this.errMsg = CommonStatus.TRANSACTION.getMsg();
     }
 
-    public ServiceTransactionException(int code, String errMsg) {
+    public ServiceTransactionException(String errMsg) {
         super(errMsg);
-        this.code = code;
+        this.code = CommonStatus.TRANSACTION.getCode();
         this.errMsg = errMsg;
     }
 }

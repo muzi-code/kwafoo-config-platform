@@ -43,6 +43,7 @@
         <json.fast>1.2.67</json.fast>
         <shiro.version>1.4.0</shiro.version>
         <jwt.version>0.9.0</jwt.version>
+        <mysql.druid.version>1.1.10</mysql.druid.version>
     </properties>
 
 
@@ -52,6 +53,11 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis.plus.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${mysql.druid.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -148,6 +154,26 @@
                 <groupId>org.ow2.asm</groupId>
                 <artifactId>asm-all</artifactId>
                 <version>5.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>4.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>5.1.9.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-redis</artifactId>
+                <version>2.1.10.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>5.1.9.RELEASE</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

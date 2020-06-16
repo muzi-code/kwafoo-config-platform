@@ -4,7 +4,7 @@ package com.github.dev.muzi.kwafoo.config.platform.domain.constant;
  * 【定义类】系统范围通用的全局常量定义
  * Create by Muzi Li on 2019-12-10
  */
-public class SystemCommonConstant {
+public class CommonConstant {
 
     /**
      * 数据库行数据是否有效字段

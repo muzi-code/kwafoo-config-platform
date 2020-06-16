@@ -1,5 +1,6 @@
 package com.github.dev.muzi.kwafoo.config.platform.domain.exception;
 
+import com.github.dev.muzi.kwafoo.config.platform.domain.constant.CommonStatus;
 import lombok.Data;
 
 /**
@@ -7,15 +8,19 @@ import lombok.Data;
  * Create by Muzi Li on 2019-11-27
  */
 @Data
-public class RequestArgumentsException extends Exception {
+public class RequestArgumentsException extends RuntimeException {
     private Integer code;
     private String errMsg;
 
-    public RequestArgumentsException(){}
+    public RequestArgumentsException() {
+        super();
+        this.code = CommonStatus.ARGUMENTS.getCode();
+        this.errMsg = CommonStatus.ARGUMENTS.getMsg();
+    }
 
-    public RequestArgumentsException(int code, String errMsg) {
+    public RequestArgumentsException(String errMsg) {
         super(errMsg);
-        this.code = code;
+        this.code = CommonStatus.ARGUMENTS.getCode();
         this.errMsg = errMsg;
     }
 }

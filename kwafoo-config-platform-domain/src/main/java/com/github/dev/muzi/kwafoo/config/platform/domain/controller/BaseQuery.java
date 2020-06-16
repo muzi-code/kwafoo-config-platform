@@ -1,4 +1,4 @@
-package com.github.dev.muzi.kwafoo.config.platform.domain.view;
+package com.github.dev.muzi.kwafoo.config.platform.domain.controller;
 
 import com.github.dev.muzi.kwafoo.config.platform.domain.exception.RequestArgumentsException;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.Data;
  * Create by Muzi Li on 2019-11-27
  */
 @Data
-public abstract class BaseQueryVO {
+public abstract class BaseQuery {
 
     public abstract boolean isValidParams() throws RequestArgumentsException;
 }
