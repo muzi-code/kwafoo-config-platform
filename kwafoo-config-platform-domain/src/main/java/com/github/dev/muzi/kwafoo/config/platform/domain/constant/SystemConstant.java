@@ -5,7 +5,6 @@ package com.github.dev.muzi.kwafoo.config.platform.domain.constant;
  * Create by Muzi Li on 2019-12-10
  */
 public class SystemConstant {
-
     /**
      * 数据库行数据是否有效字段
      */

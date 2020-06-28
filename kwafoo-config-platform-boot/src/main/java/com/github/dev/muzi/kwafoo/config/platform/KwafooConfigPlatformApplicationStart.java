@@ -2,13 +2,11 @@ package com.github.dev.muzi.kwafoo.config.platform;
 
 import com.github.dev.muzi.kwafoo.config.platform.boot.config.Swagger2Configuration;
 import com.github.dev.muzi.kwafoo.config.platform.boot.config.WebConfiguration;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 
 
 /**
@@ -16,9 +14,8 @@ import org.springframework.context.annotation.PropertySource;
  */
 @SpringBootApplication
 @ComponentScan(value = "com.github.dev.muzi.kwafoo.config.platform")
-@Import({WebConfiguration.class, Swagger2Configuration.class})
 @ImportResource({"classpath:spring/spring-base.xml"})
-@PropertySource(value = {"classpath:boot.properties", "classpath:config.properties","classpath:mysql.properties"})
+@PropertySource(value = {"classpath:boot.properties", "classpath:config.properties"})
 public class KwafooConfigPlatformApplicationStart extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

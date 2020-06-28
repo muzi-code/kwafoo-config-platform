@@ -1,4 +1,4 @@
-package com.github.dev.muzi.kwafoo.config.platform.domain.view;
+package com.github.dev.muzi.kwafoo.config.platform.domain.controller;
 
 import lombok.Data;
 
@@ -10,7 +10,6 @@ import java.util.List;
  */
 @Data
 public abstract class BaseDataQuery<T> implements IBaseValid {
-
     /**
      * 输入框查询条件
      */

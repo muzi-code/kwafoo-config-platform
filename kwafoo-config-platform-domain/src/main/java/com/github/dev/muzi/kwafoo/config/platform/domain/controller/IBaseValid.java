@@ -1,4 +1,4 @@
-package com.github.dev.muzi.kwafoo.config.platform.domain.view;
+package com.github.dev.muzi.kwafoo.config.platform.domain.controller;
 
 /**
  * 【参数校验接口】通用的基础BaseQueryVO

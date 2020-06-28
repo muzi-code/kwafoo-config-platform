@@ -1,6 +1,6 @@
 package com.github.dev.muzi.kwafoo.config.platform.domain.system;
 
-import com.github.dev.muzi.kwafoo.config.platform.domain.view.IBaseValid;
+import com.github.dev.muzi.kwafoo.config.platform.domain.controller.IBaseValid;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

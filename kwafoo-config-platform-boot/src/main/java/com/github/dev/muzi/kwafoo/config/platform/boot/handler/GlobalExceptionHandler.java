@@ -1,7 +1,7 @@
 package com.github.dev.muzi.kwafoo.config.platform.boot.handler;
 
+import com.github.dev.muzi.kwafoo.config.platform.domain.controller.BaseResponse;
 import com.github.dev.muzi.kwafoo.config.platform.domain.exception.*;
-import com.github.dev.muzi.kwafoo.config.platform.domain.view.BaseResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -49,7 +49,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.FOUND)
     @ResponseBody
     public BaseResponse paramsException(ProcessException e) {
-        return BaseResponse.failure(e.getCode(), e.getMessage());
+        return BaseResponse.failure(e.getCode(), e.getErrMsg());
     }
 
     @ExceptionHandler(Exception.class)

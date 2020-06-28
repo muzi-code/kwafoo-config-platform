@@ -1,4 +1,4 @@
-package com.github.dev.muzi.kwafoo.config.platform.domain.view;
+package com.github.dev.muzi.kwafoo.config.platform.domain.controller;
 
 import com.github.dev.muzi.kwafoo.config.platform.domain.constant.CommonStatus;
 import io.swagger.annotations.ApiModel;

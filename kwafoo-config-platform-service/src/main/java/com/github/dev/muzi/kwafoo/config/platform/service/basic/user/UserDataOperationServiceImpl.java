@@ -6,8 +6,6 @@ import com.github.dev.muzi.kwafoo.config.platform.dao.user.mapper.BasicUserMappe
 import com.github.dev.muzi.kwafoo.config.platform.dao.user.model.BasicUserInfo;
 import com.github.dev.muzi.kwafoo.config.platform.domain.exception.MysqlException;
 import com.github.dev.muzi.kwafoo.config.platform.domain.exception.ParameterException;
-import com.github.dev.muzi.kwafoo.config.platform.domain.exception.ProcessException;
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +19,6 @@ import java.util.List;
  */
 @Service("userDataOperationServiceImpl")
 public class UserDataOperationServiceImpl implements IUserDataOperationService {
-
     /*
      * 用户信息表具备 yn 字段
      *  1.yn = 1 是有效用户

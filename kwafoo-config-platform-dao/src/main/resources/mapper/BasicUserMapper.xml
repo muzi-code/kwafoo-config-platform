@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.letwecode.muzi.fast.dao.user.mapper.BasicUserMapper">
+<mapper namespace="com.github.dev.muzi.kwafoo.config.platform.dao.user.mapper.BasicUserMapper">
     <!-- 由于使用了Mybatis-plus所以仅是复杂的sql才在Mapper.xml中进行拼接映射处理 -->
 
     <!--&lt;!&ndash; 用户信息 角色信息 权限信息 关联映射关系Mapping &ndash;&gt;-->

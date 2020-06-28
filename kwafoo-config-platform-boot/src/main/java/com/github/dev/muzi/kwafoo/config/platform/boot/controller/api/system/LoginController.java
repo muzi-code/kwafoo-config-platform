@@ -1,9 +1,8 @@
 package com.github.dev.muzi.kwafoo.config.platform.boot.controller.api.system;
 
-
 import com.github.dev.muzi.kwafoo.config.platform.boot.filter.JwtTokenTool;
 import com.github.dev.muzi.kwafoo.config.platform.common.CookieUtil;
-import com.github.dev.muzi.kwafoo.config.platform.domain.view.BaseResponse;
+import com.github.dev.muzi.kwafoo.config.platform.domain.controller.BaseResponse;
 import io.swagger.annotations.Api;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +41,6 @@ public class LoginController {
             CookieUtil.set(response, TOKEN_KEY, TOKEN_VALUE_PRE + token, TOKEN_COOKIE_MAX_AGE);
             return BaseResponse.success("adminPage");
         }
-
         return BaseResponse.failure();
     }
 
