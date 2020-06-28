@@ -18,7 +18,7 @@ import org.springframework.context.annotation.PropertySource;
 @ComponentScan(value = "com.github.dev.muzi.kwafoo.config.platform")
 @Import({WebConfiguration.class, Swagger2Configuration.class})
 @ImportResource({"classpath:spring/spring-base.xml"})
-@PropertySource(value = {"classpath:boot.properties", "classpath:config.properties"})
+@PropertySource(value = {"classpath:boot.properties", "classpath:config.properties","classpath:mysql.properties"})
 public class KwafooConfigPlatformApplicationStart extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

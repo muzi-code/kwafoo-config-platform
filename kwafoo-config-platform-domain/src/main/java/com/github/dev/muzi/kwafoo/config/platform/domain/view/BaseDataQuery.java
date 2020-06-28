@@ -9,7 +9,7 @@ import java.util.List;
  * Create by Muzi Li on 2019-11-27
  */
 @Data
-public abstract class BaseDataQueryVO<T> extends BaseQueryVO {
+public abstract class BaseDataQuery<T> implements IBaseValid {
 
     /**
      * 输入框查询条件

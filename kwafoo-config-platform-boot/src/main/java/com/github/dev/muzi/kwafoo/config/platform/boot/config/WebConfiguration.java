@@ -5,7 +5,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.ToStringSerializer;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.github.dev.muzi.kwafoo.config.platform.boot.filter.RequestAuthFilter;
+import com.github.dev.muzi.kwafoo.config.platform.boot.filter.GlobalLoginValidFilter;
 import com.github.dev.muzi.kwafoo.config.platform.boot.properties.RestProperties;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.*;
@@ -122,8 +122,8 @@ public class WebConfiguration extends WebMvcConfigurationSupport {
      */
     @Bean
     @ConditionalOnProperty(prefix = RestProperties.REST_PREFIX, name = "auth-open", havingValue = "true", matchIfMissing = true)
-    public RequestAuthFilter jwtAuthenticationTokenFilter() {
-        return new RequestAuthFilter();
+    public GlobalLoginValidFilter jwtAuthenticationTokenFilter() {
+        return new GlobalLoginValidFilter();
     }
 
 

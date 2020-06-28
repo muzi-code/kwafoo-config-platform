@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.letwecode.muzi.fast.dao.user.mapper.BasicUserMapper">
+    <!-- 由于使用了Mybatis-plus所以仅是复杂的sql才在Mapper.xml中进行拼接映射处理 -->
+
+    <!--&lt;!&ndash; 用户信息 角色信息 权限信息 关联映射关系Mapping &ndash;&gt;-->
+    <!--<resultMap id="USER_ROLE_AUTH_RELATION_MAP" type="cn.letwecode.muzi.fast.dao.user.model.UserRoleRelationDO">-->
+        <!--<result property="userId" column="user_id"/>-->
+        <!--<result property="userName" column="user_name"/>-->
+
+        <!--<collection property="roleList" ofType="cn.letwecode.muzi.fast.dao.role.model.RoleAuthRelationDO">-->
+            <!--<id property="roleId" column="role_id" />-->
+            <!--<result property="roleName" column="role_name" />-->
+            <!--<result property="roleDescription" column="role_description" />-->
+
+            <!--<collection property="authList" ofType="cn.letwecode.muzi.fast.dao.auth.model.SimpleAuthInfoDO">-->
+                <!--<id property="id" column="auth_id" />-->
+                <!--<result property="name" column="auth_name" />-->
+                <!--<result property="type" column="auth_type" />-->
+            <!--</collection>-->
+        <!--</collection>-->
+    <!--</resultMap>-->
+
+
+    <!--&lt;!&ndash; 获取用户ID下的全部的角色信息 &ndash;&gt;-->
+    <!--<select id="getUserRole" parameterType="java.lang.Long" resultMap="USER_ROLE_AUTH_RELATION_MAP">-->
+        <!--SELECT-->
+            <!--ur.user_id user_id,-->
+            <!--r.id role_id,-->
+            <!--r.name role_name,-->
+            <!--r.description role_description-->
+        <!--FROM-->
+            <!--system_user_role ur-->
+        <!--LEFT JOIN system_role r ON ur.role_id = r.id-->
+        <!--WHERE-->
+            <!--ur.user_id = #{id}-->
+    <!--</select>-->
+
+    <!--&lt;!&ndash; 获取用户ID下的全部的角色信息和权限信息 &ndash;&gt;-->
+    <!--<select id="getUserRoleAuth" parameterType="java.lang.Long" resultMap="USER_ROLE_AUTH_RELATION_MAP">-->
+        <!--SELECT-->
+            <!--ur.user_id user_id,-->
+            <!--r.id role_id,-->
+            <!--r.name role_name,-->
+            <!--r.description role_description,-->
+            <!--a.id auth_id,-->
+            <!--a.name auth_name,-->
+            <!--a.type auth_type-->
+        <!--FROM-->
+            <!--system_user_role ur-->
+        <!--LEFT JOIN system_role r ON ur.role_id = r.id-->
+        <!--left join system_role_auth ra on ra.role_id = r.id-->
+        <!--left join system_auth a on ra.auth_id = a.id-->
+        <!--WHERE-->
+            <!--ur.user_id = #{id}-->
+    <!--</select>-->
+
+</mapper>

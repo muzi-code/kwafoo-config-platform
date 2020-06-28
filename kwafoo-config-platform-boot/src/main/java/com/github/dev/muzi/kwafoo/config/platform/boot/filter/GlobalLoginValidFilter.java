@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 /**
  * 【过滤器】请求权限过滤器
  * <p>
@@ -25,7 +26,7 @@ import java.io.PrintWriter;
  * Create by Muzi Li on 2019-09-12
  */
 @Slf4j
-public class RequestAuthFilter extends OncePerRequestFilter {
+public class GlobalLoginValidFilter extends OncePerRequestFilter {
 
     @Autowired
     private JwtTokenTool jwtTokenTool;

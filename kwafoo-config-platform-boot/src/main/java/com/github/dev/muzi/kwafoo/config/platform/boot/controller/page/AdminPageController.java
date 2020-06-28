@@ -17,7 +17,7 @@ public class AdminPageController {
     private static final Logger LOGGER = LoggerFactory.getLogger(AdminPageController.class);
 
 
-    @RequestMapping("/admin")
+    @RequestMapping("/adminPage")
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
@@ -27,7 +27,7 @@ public class AdminPageController {
     @RequestMapping("/loginPage")
     public ModelAndView loginPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("admin-login");
+        modelAndView.setViewName("login");
         return modelAndView;
     }
 

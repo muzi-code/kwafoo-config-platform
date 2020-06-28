@@ -67,12 +67,12 @@
             console.log('form submit');
 
 
-            $.get("/api/basic/user/adminLogin", obj.field,
+            $.get("/api/basic/system/login", obj.field,
                 function (result) {
                     console.log(result);
                     if (result.status === 200) {
                         console.log($.cookie('Authorization'));
-                        window.location.href = "admin";
+                        window.location.href = result.data;
                     } else {
                         layer.msg(result.msg, {
                             offset: '15px'

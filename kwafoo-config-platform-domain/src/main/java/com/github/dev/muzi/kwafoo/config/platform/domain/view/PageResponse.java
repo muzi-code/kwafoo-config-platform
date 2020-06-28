@@ -1,6 +1,6 @@
 package com.github.dev.muzi.kwafoo.config.platform.domain.view;
 
-import com.github.dev.muzi.kwafoo.config.platform.domain.constant.CommonStatusConstant;
+import com.github.dev.muzi.kwafoo.config.platform.domain.constant.CommonStatus;
 import com.google.common.collect.Lists;
 import lombok.Data;
 import org.springframework.util.CollectionUtils;
@@ -8,7 +8,7 @@ import org.springframework.util.CollectionUtils;
 import java.util.List;
 
 @Data
-public class PageResponseVO<M> extends BaseResponseVO<M> {
+public class PageResponse<M> extends BaseResponse<M> {
 
     /*
      * 当前页码
@@ -31,13 +31,13 @@ public class PageResponseVO<M> extends BaseResponseVO<M> {
     private List<M> records = Lists.newArrayList();
 
 
-    public static <M> PageResponseVO successPage(BaseDataQueryVO page) {
+    public static <M> PageResponse successPage(BaseDataQuery page) {
         if (page == null || CollectionUtils.isEmpty(page.getRecords()) || page.getTotal() == 0) {
-            return PageResponseVO.failurePage();
+            return PageResponse.failurePage();
         }
-        PageResponseVO baseResponseVO = new PageResponseVO();
-        baseResponseVO.setStatus(CommonStatusConstant.SUCCESS.getCode());
-        baseResponseVO.setMsg(CommonStatusConstant.SUCCESS.getMsg());
+        PageResponse baseResponseVO = new PageResponse();
+        baseResponseVO.setStatus(CommonStatus.SUCCESS.getCode());
+        baseResponseVO.setMsg(CommonStatus.SUCCESS.getMsg());
         baseResponseVO.setRecords(page.getRecords());
         baseResponseVO.setTotal(page.getTotal());
         baseResponseVO.setSize(page.getSize());
@@ -45,10 +45,10 @@ public class PageResponseVO<M> extends BaseResponseVO<M> {
         return baseResponseVO;
     }
 
-    public static <M> PageResponseVO failurePage() {
-        PageResponseVO baseResponseVO = new PageResponseVO();
-        baseResponseVO.setStatus(CommonStatusConstant.FAILURE.getCode());
-        baseResponseVO.setMsg(CommonStatusConstant.FAILURE.getMsg());
+    public static <M> PageResponse failurePage() {
+        PageResponse baseResponseVO = new PageResponse();
+        baseResponseVO.setStatus(CommonStatus.FAILURE.getCode());
+        baseResponseVO.setMsg(CommonStatus.FAILURE.getMsg());
         baseResponseVO.setRecords(Lists.newArrayList());
         baseResponseVO.setTotal(0L);
         baseResponseVO.setSize(0L);
