@@ -41,7 +41,7 @@
         <muzi.current.version>1.0-SNAPSHOT</muzi.current.version>
         <service.spring.version>5.1.9.RELEASE</service.spring.version>
         <json.fast>1.2.67</json.fast>
-        <shiro.version>1.4.0</shiro.version>
+        <shiro.version>1.7.0</shiro.version>
         <jwt.version>0.9.0</jwt.version>
         <mysql.druid.version>1.1.10</mysql.druid.version>
     </properties>
